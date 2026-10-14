@@ -3,8 +3,10 @@ package questtracker
 import java.util.Scanner;
 
 /**
- * Main controller class for the game tracker application.
- * Handles user input and calls Inventory and QuestLog methods.
+ * Manages menus and outputs. Uses scanner to parse user input
+ * 
+ * @author Alex Leon
+ * @version 2026.10.13
  */
 public class GameTracker
 {
