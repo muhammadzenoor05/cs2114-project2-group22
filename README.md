@@ -16,6 +16,7 @@ use `LinkedChain<Quest>` and `Inventory` can use `LinkedChain<Item>` without nee
 - Muhammad will help verify that `Inventory` and `QuestLog` correctly use the shared generic `LinkedChain<T>` class and assist
 - with final integration.
 - Charlotte will review all test classes accordingly with all updated classes, as well as to make sure the 'LinkedChain<T>' is implemented properly. Additionally, will add finishing touches in terms of format.
+- Diya will attempt to implement our stretch goal of adding a completed quest history
 
 ## Attribution
 | File | Team member(s) | Contribution |
@@ -26,5 +27,8 @@ use `LinkedChain<Quest>` and `Inventory` can use `LinkedChain<Item>` without nee
 | ItemTest | Charlotte Linney | Implemented ItemTest methods based on Item class
 | InventoryTest | Charlotte Linney | Implemented InventoryTest methods based on Inventory class
 | GameTrackerTest | Charlotte Linney | Implemented GameTrackerTest methods based on GameTracker class
+| Inventory.java | Diya Saraf | Implemented the Inventory class based on project specification |
+| QuestLog.java | Diya Saraf | Implemented the QuestLog class based on project specification |
+
 
 ## GenAI Use
