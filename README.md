@@ -38,3 +38,4 @@ Our MVP still has some unfinished pieces. We need to add items such as coins and
 
 
 ## GenAI Use
+In creating GameTracker class and testing it I used GenAI. AI helped me design the output (what the menu would look like). I also used GenAI to write test cases with ByteArrayInputStream because I wasn't sure how to use it. This simulates a user's invalid input so that we can ensure that the output String matches the expected. 
