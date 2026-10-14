@@ -1,0 +1,24 @@
+# Game Quest and Inventory Tracker
+
+## How to Run
+
+## How to Run Tests
+
+## Reflection
+For the prototype, I implemented the `Item` and `Quest` classes based on the fields and behavior we defined in our specification. 
+These classes were kept separate from the `LinkedChain` so that the linked structure only handles storage while the application classes 
+handle game-specific data. The provided `LinkedChain` was used without changing its internal structure for my part of the prototype.
+
+The main thing I figured out from our earlier unknowns was how the generic design connects to the application classes. `QuestLog` can 
+use `LinkedChain<Quest>` and `Inventory` can use `LinkedChain<Item>` without needing separate linked chain implementations.
+
+## Next Steps
+- Muhammad will help verify that `Inventory` and `QuestLog` correctly use the shared generic `LinkedChain<T>` class and assist
+- with final integration.
+
+## Attribution
+| File | Team member(s) | Contribution |
+| Item.java | Muhammad Bhatti | Implemented the Item data class based on the project specification |
+| Quest.java | Muhammad Bhatti | Implemented the Quest data class based on the project specification |
+
+## GenAI Use
