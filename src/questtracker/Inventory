@@ -1,4 +1,4 @@
-package questtracker
+package questtracker;
 
 /**
  * Tracks and updates a player's inventory
