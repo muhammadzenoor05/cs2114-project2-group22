@@ -1,0 +1,51 @@
+package questtracker;
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+/**
+ * Tests for GameTracker
+ * 
+ * @author Charlotte Linney
+ * @version 2026.10.13
+ */
+public class GameTrackerTest
+{
+    @Test
+    public void testConstructor()
+    {
+        GameTracker tracker = new GameTracker();
+
+        assertNotNull(tracker);
+    }
+
+    @Test
+    public void testDisplayMainMenu()
+    {
+        GameTracker tracker = new GameTracker();
+
+        try
+        {
+            tracker.displayMainMenu();
+        }
+        catch (Exception e)
+        {
+            fail("displayMainMenu threw an exception.");
+        }
+    }
+
+    @Test
+    public void testHandleMenuChoiceInvalid()
+    {
+        GameTracker tracker = new GameTracker();
+
+        try
+        {
+            tracker.handleMenuChoice(99);
+        }
+        catch (Exception e)
+        {
+            fail("handleMenuChoice threw an exception.");
+        }
+    }
+}

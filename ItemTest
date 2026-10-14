@@ -1,0 +1,175 @@
+package questtracker;
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+
+/**
+ * Tests for Item
+ * 
+ * @author Charlotte Linney
+ * @version 2026.10.13
+ */
+public class ItemTest
+{
+    @Test
+    public void testConstructor()
+    {
+        Item item = new Item("Potion", "Consumable", 5);
+
+        assertEquals("Potion", item.getName());
+        assertEquals("Consumable", item.getType());
+        assertEquals(5, item.getQuantity());
+    }
+
+    @Test
+    public void testConstructorNullName()
+    {
+        Exception thrown = null;
+
+        try
+        {
+            new Item(null, "Consumable", 5);
+        }
+        catch (Exception e)
+        {
+            thrown = e;
+        }
+
+        assertTrue(thrown instanceof IllegalArgumentException);
+    }
+
+    @Test
+    public void testConstructorEmptyName()
+    {
+        Exception thrown = null;
+
+        try
+        {
+            new Item("", "Consumable", 5);
+        }
+        catch (Exception e)
+        {
+            thrown = e;
+        }
+
+        assertTrue(thrown instanceof IllegalArgumentException);
+    }
+
+    @Test
+    public void testConstructorNullType()
+    {
+        Exception thrown = null;
+
+        try
+        {
+            new Item("Potion", null, 5);
+        }
+        catch (Exception e)
+        {
+            thrown = e;
+        }
+
+        assertTrue(thrown instanceof IllegalArgumentException);
+    }
+
+    @Test
+    public void testConstructorEmptyType()
+    {
+        Exception thrown = null;
+
+        try
+        {
+            new Item("Potion", "", 5);
+        }
+        catch (Exception e)
+        {
+            thrown = e;
+        }
+
+        assertTrue(thrown instanceof IllegalArgumentException);
+    }
+
+    @Test
+    public void testConstructorInvalidQuantity()
+    {
+        Exception thrown = null;
+
+        try
+        {
+            new Item("Potion", "Consumable", 0);
+        }
+        catch (Exception e)
+        {
+            thrown = e;
+        }
+
+        assertTrue(thrown instanceof IllegalArgumentException);
+    }
+
+    @Test
+    public void testSetQuantity()
+    {
+        Item item = new Item("Potion", "Consumable", 5);
+
+        item.setQuantity(10);
+
+        assertEquals(10, item.getQuantity());
+    }
+
+    @Test
+    public void testSetQuantityInvalid()
+    {
+        Item item = new Item("Potion", "Consumable", 5);
+
+        Exception thrown = null;
+
+        try
+        {
+            item.setQuantity(0);
+        }
+        catch (Exception e)
+        {
+            thrown = e;
+        }
+
+        assertTrue(thrown instanceof IllegalArgumentException);
+    }
+
+    @Test
+    public void testAddQuantity()
+    {
+        Item item = new Item("Potion", "Consumable", 5);
+
+        item.addQuantity(3);
+
+        assertEquals(8, item.getQuantity());
+    }
+
+    @Test
+    public void testAddQuantityInvalid()
+    {
+        Item item = new Item("Potion", "Consumable", 5);
+
+        Exception thrown = null;
+
+        try
+        {
+            item.addQuantity(0);
+        }
+        catch (Exception e)
+        {
+            thrown = e;
+        }
+
+        assertTrue(thrown instanceof IllegalArgumentException);
+    }
+
+    @Test
+    public void testToString()
+    {
+        Item item = new Item("Potion", "Consumable", 5);
+
+        assertEquals("Potion (Consumable) x5", item.toString());
+    }
+}

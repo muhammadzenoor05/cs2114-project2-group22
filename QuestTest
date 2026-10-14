@@ -1,0 +1,146 @@
+package questtracker;
+
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+/**
+ * Tests for Quest
+ * 
+ * @author Charlotte Linney
+ * @version 2026.10.13
+ */
+public class QuestTest
+{
+    @Test
+    public void testConstructor()
+    {
+        Quest quest = new Quest("Dragon Hunt", "Defeat the dragon");
+
+        assertEquals("Dragon Hunt", quest.getName());
+        assertEquals("Defeat the dragon", quest.getDescription());
+        assertEquals(0, quest.getProgress());
+        assertFalse(quest.isCompleted());
+    }
+
+    @Test
+    public void testConstructorNullName()
+    {
+        Exception thrown = null;
+
+        try
+        {
+            new Quest(null, "Description");
+        }
+        catch (Exception e)
+        {
+            thrown = e;
+        }
+
+        assertTrue(thrown instanceof IllegalArgumentException);
+    }
+
+    @Test
+    public void testConstructorEmptyName()
+    {
+        Exception thrown = null;
+
+        try
+        {
+            new Quest("", "Description");
+        }
+        catch (Exception e)
+        {
+            thrown = e;
+        }
+
+        assertTrue(thrown instanceof IllegalArgumentException);
+    }
+
+    @Test
+    public void testConstructorNullDescription()
+    {
+        Exception thrown = null;
+
+        try
+        {
+            new Quest("Quest", null);
+        }
+        catch (Exception e)
+        {
+            thrown = e;
+        }
+
+        assertTrue(thrown instanceof IllegalArgumentException);
+    }
+
+    @Test
+    public void testAddProgress()
+    {
+        Quest quest = new Quest("Dragon Hunt", "Defeat the dragon");
+
+        quest.addProgress(25);
+
+        assertEquals(25, quest.getProgress());
+        assertFalse(quest.isCompleted());
+    }
+
+    @Test
+    public void testAddProgressCompleteQuest()
+    {
+        Quest quest = new Quest("Dragon Hunt", "Defeat the dragon");
+
+        quest.addProgress(100);
+
+        assertEquals(100, quest.getProgress());
+        assertTrue(quest.isCompleted());
+    }
+
+    @Test
+    public void testAddProgressOverOneHundred()
+    {
+        Quest quest = new Quest("Dragon Hunt", "Defeat the dragon");
+
+        quest.addProgress(150);
+
+        assertEquals(100, quest.getProgress());
+        assertTrue(quest.isCompleted());
+    }
+
+    @Test
+    public void testAddProgressNegativeAmount()
+    {
+        Quest quest = new Quest("Dragon Hunt", "Defeat the dragon");
+
+        Exception thrown = null;
+
+        try
+        {
+            quest.addProgress(-10);
+        }
+        catch (Exception e)
+        {
+            thrown = e;
+        }
+
+        assertTrue(thrown instanceof IllegalArgumentException);
+    }
+
+    @Test
+    public void testCompleteQuest()
+    {
+        Quest quest = new Quest("Dragon Hunt", "Defeat the dragon");
+
+        quest.completeQuest();
+
+        assertEquals(100, quest.getProgress());
+        assertTrue(quest.isCompleted());
+    }
+
+    @Test
+    public void testToString()
+    {
+        Quest quest = new Quest("Dragon Hunt", "Defeat the dragon");
+
+        assertEquals("Dragon Hunt - 0%", quest.toString());
+    }
+}
