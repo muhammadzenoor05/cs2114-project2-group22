@@ -3,14 +3,45 @@ package questtracker;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 /**
- * Tests for GameTracker
+ * Tests for GameTracker. Uses ByteArray streams to ensure the expected output is printed.
  * 
- * @author Charlotte Linney
- * @version 2026.10.13
+ * @author Charlotte Linney and Alex Leon
+ * @version 2026.10.14
  */
 public class GameTrackerTest
 {
+    /**
+     * Sets up 
+     */
+    @BeforeEach
+    public void setUp()
+    {
+        output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+    }
+
+    /**
+     * Resets variables from setUp 
+     */
+    @AfterEach
+    public void tearDown()
+    {
+        System.setOut(originalOut);
+        System.setIn(originalIn);
+    }
+
+    /**
+    * Tests that GameTracker constructor works.
+     */
     @Test
     public void testConstructor()
     {
@@ -19,33 +50,50 @@ public class GameTrackerTest
         assertNotNull(tracker);
     }
 
-    @Test
-    public void testDisplayMainMenu()
-    {
-        GameTracker tracker = new GameTracker();
-
-        try
-        {
-            tracker.displayMainMenu();
-        }
-        catch (Exception e)
-        {
-            fail("displayMainMenu threw an exception.");
-        }
-    }
-
+    /**
+     * Tests an invalid main menu choice.
+     */
     @Test
     public void testHandleMenuChoiceInvalid()
     {
+        System.setIn(new ByteArrayInputStream("0\n".getBytes()));
+
         GameTracker tracker = new GameTracker();
 
-        try
-        {
-            tracker.handleMenuChoice(99);
-        }
-        catch (Exception e)
-        {
-            fail("handleMenuChoice threw an exception.");
-        }
+        tracker.handleMenuChoice(99);
+
+        assertTrue(output.toString().contains("Invalid choice"));
     }
+
+    /**
+     * Tests an invalid inventory menu choice.
+     */
+    @Test
+    public void testInventoryMenuInvalidChoice()
+    {
+        System.setIn(new ByteArrayInputStream("99\n".getBytes()));
+
+        GameTracker tracker = new GameTracker();
+
+        tracker.inventoryMenu();
+
+        assertTrue(output.toString().contains("Invalid choice"));
+    }
+
+    /**
+     * Tests an invalid quest menu choice.
+     */
+    @Test
+    public void testQuestMenuInvalidChoice()
+    {
+        System.setIn(new ByteArrayInputStream("99\n".getBytes()));
+
+        GameTracker tracker = new GameTracker();
+
+        tracker.questMenu();
+
+        assertTrue(output.toString().contains("Invalid choice"));
+    }
+
+            
 }
