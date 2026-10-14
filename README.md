@@ -12,11 +12,14 @@ handle game-specific data. The provided `LinkedChain` was used without changing 
 The main thing I figured out from our earlier unknowns was how the generic design connects to the application classes. `QuestLog` can 
 use `LinkedChain<Quest>` and `Inventory` can use `LinkedChain<Item>` without needing separate linked chain implementations.
 
+GameTracker.java was relatively simple to implement because it is mostly just responsible for printing various menus. When testing the class, I used ByteArrayInputStream to ensure that the specific outputs for invalid inputs matched the expected Strings such as "Invalid input." 
+
 ## Next Steps
 - Muhammad will help verify that `Inventory` and `QuestLog` correctly use the shared generic `LinkedChain<T>` class and assist
 - with final integration.
 - Charlotte will review all test classes accordingly with all updated classes, as well as to make sure the 'LinkedChain<T>' is implemented properly. Additionally, will add finishing touches in terms of format.
 - Diya will attempt to implement our stretch goal of adding a completed quest history
+- Alex will ensure that GameTracker integrates smoothly with other system classes and that we get the expected output across all menu options and invalid requests.
 
 ## Attribution
 | File | Team member(s) | Contribution |
@@ -26,7 +29,8 @@ use `LinkedChain<Quest>` and `Inventory` can use `LinkedChain<Item>` without nee
 | QuestLogTest | Charlotte Linney | Implemented QuestLogTest methods based on QuestLog class
 | ItemTest | Charlotte Linney | Implemented ItemTest methods based on Item class
 | InventoryTest | Charlotte Linney | Implemented InventoryTest methods based on Inventory class
-| GameTrackerTest | Charlotte Linney | Implemented GameTrackerTest methods based on GameTracker class
+| GameTracker.java | Alex Leon | Implemented GameTracker class based on the project specification |
+| GameTrackerTest | Charlotte Linney and Alex Leon| Implemented GameTrackerTest methods based on GameTracker class. Used ByteArrayInputStream to ensure the ouput when given an invalid input matched the expected String.
 | Inventory.java | Diya Saraf | Implemented the Inventory class based on project specification |
 | QuestLog.java | Diya Saraf | Implemented the QuestLog class based on project specification |
 
