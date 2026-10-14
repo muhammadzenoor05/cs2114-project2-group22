@@ -14,6 +14,8 @@ use `LinkedChain<Quest>` and `Inventory` can use `LinkedChain<Item>` without nee
 
 GameTracker.java was relatively simple to implement because it is mostly just responsible for printing various menus. When testing the class, I used ByteArrayInputStream to ensure that the specific outputs for invalid inputs matched the expected Strings such as "Invalid input." 
 
+Our MVP still has some unfinished pieces. We need to add items such as coins and experience and limit inventory capacity. Our stretch goal from the initial scope of adding a quest history also should be implemented by next week.
+
 ## Next Steps
 - Muhammad will help verify that `Inventory` and `QuestLog` correctly use the shared generic `LinkedChain<T>` class and assist
 - with final integration.
