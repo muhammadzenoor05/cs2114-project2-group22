@@ -176,6 +176,7 @@ public class GameTracker
         System.out.println("3. Remove Quest");
         System.out.println("4. Update Quest Progress");
         System.out.println("5. Complete Quest");
+        System.out.println("6. View Quest History");
         System.out.println("0. Back");
         System.out.print("Enter choice: ");
 
@@ -229,7 +230,11 @@ public class GameTracker
             System.out.print("Quest name to complete: ");
             String name = scanner.nextLine();
 
-            questLog.completeQuest(name);
+            questLog.completeTheQuest(name);
+        }
+        else if (choice == 6)
+        {
+            questLog.displayHistory();
         }
         else if (choice != 0)
         {
