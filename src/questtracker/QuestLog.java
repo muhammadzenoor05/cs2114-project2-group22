@@ -1,17 +1,19 @@
-package questtracker;
+package game;
 
 /**
  * Tracks and updates the status of the quests in the game
  * 
  * @author Diya Saraf (diyas04)
- * @version 2026.10.13
+ * @version 2026.09.16
  */
 public class QuestLog {
 
     private LinkedChain<Quest> questList;
+    private LinkedChain<Quest> history;
 
     public QuestLog() {
         questList = new LinkedChain<Quest>();
+        history = new LinkedChain<Quest>();
     }
 
 
@@ -126,4 +128,19 @@ public class QuestLog {
         return questList.size();
     }
 
+    /**
+     * Updates the history with the completed quests
+     * returns: void
+     * parameters: none
+     */
+    public void updateHistory() {
+        history.clear();
+        Quest[] quests = questList.toArray(new Quest[questList.size()]);
+
+        for (Quest quest : quests) {
+            if (quest.isCompleted()) {
+                history.add(quest);
+            }
+        }
+    }
 }
