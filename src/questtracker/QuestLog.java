@@ -1,4 +1,4 @@
-package game;
+package questtracker;
 
 /**
  * Tracks and updates the status of the quests in the game
@@ -84,6 +84,9 @@ public class QuestLog {
         }
         else {
             quest.addProgress(amount);
+            if(quest.isCompleted()) {
+                completeTheQuest(name);
+            }
         }
 
     }
@@ -103,6 +106,8 @@ public class QuestLog {
                 quest.completeQuest();
             }
         }
+        updateHistory();
+        removeQuest(name);
     }
 
 
@@ -114,7 +119,7 @@ public class QuestLog {
      */
     // CHECK IF NEED system.out.println FOR THIS
     public void displayQuests() {
-        questList.toString();
+        System.out.print(questList.toString());
     }
 
 
@@ -134,7 +139,7 @@ public class QuestLog {
      * parameters: none
      */
     public void updateHistory() {
-        history.clear();
+        //history.clear();
         Quest[] quests = questList.toArray(new Quest[questList.size()]);
 
         for (Quest quest : quests) {
@@ -142,5 +147,9 @@ public class QuestLog {
                 history.add(quest);
             }
         }
+    }
+    
+    public void displayHistory() {
+        System.out.print(history.toString());
     }
 }
