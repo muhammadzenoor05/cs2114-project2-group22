@@ -1,4 +1,4 @@
-package questtracker
+package questtracker;
 
 import java.util.Scanner;
 
