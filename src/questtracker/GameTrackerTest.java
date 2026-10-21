@@ -1,7 +1,6 @@
 package questtracker;
 
-import static org.junit.Assert.*;
-import org.junit.Test;
+import student.TestCase;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -17,7 +16,7 @@ import org.junit.jupiter.api.Test;
  * @author Charlotte Linney and Alex Leon
  * @version 2026.10.14
  */
-public class GameTrackerTest
+public class GameTrackerTest extends TestCase
 {
     /**
      * Sets up 
@@ -42,7 +41,6 @@ public class GameTrackerTest
     /**
     * Tests that GameTracker constructor works.
      */
-    @Test
     public void testConstructor()
     {
         GameTracker tracker = new GameTracker();
@@ -53,7 +51,6 @@ public class GameTrackerTest
     /**
      * Tests an invalid main menu choice.
      */
-    @Test
     public void testHandleMenuChoiceInvalid()
     {
         System.setIn(new ByteArrayInputStream("0\n".getBytes()));
@@ -68,7 +65,6 @@ public class GameTrackerTest
     /**
      * Tests an invalid inventory menu choice.
      */
-    @Test
     public void testInventoryMenuInvalidChoice()
     {
         System.setIn(new ByteArrayInputStream("99\n".getBytes()));
@@ -83,7 +79,6 @@ public class GameTrackerTest
     /**
      * Tests an invalid quest menu choice.
      */
-    @Test
     public void testQuestMenuInvalidChoice()
     {
         System.setIn(new ByteArrayInputStream("99\n".getBytes()));

@@ -1,18 +1,19 @@
 package questtracker;
 
-import static org.junit.Assert.*;
-import org.junit.Test;
+import student.TestCase;
 
 
 /**
  * Tests for Item
  * 
  * @author Charlotte Linney
- * @version 2026.10.13
+ * @version 2026.10.20
  */
-public class ItemTest
+public class ItemTest extends TestCase
 {
-    @Test
+    /**
+     * Tests setUp
+     */
     public void testConstructor()
     {
         Item item = new Item("Potion", "Consumable", 5);
@@ -22,7 +23,10 @@ public class ItemTest
         assertEquals(5, item.getQuantity());
     }
 
-    @Test
+
+    /**
+     * Tests setUp with null name
+     */
     public void testConstructorNullName()
     {
         Exception thrown = null;
@@ -39,7 +43,10 @@ public class ItemTest
         assertTrue(thrown instanceof IllegalArgumentException);
     }
 
-    @Test
+
+    /**
+     * Tests setUp with no name
+     */
     public void testConstructorEmptyName()
     {
         Exception thrown = null;
@@ -56,7 +63,10 @@ public class ItemTest
         assertTrue(thrown instanceof IllegalArgumentException);
     }
 
-    @Test
+
+    /**
+     * Tests setUp with null type
+     */
     public void testConstructorNullType()
     {
         Exception thrown = null;
@@ -73,7 +83,10 @@ public class ItemTest
         assertTrue(thrown instanceof IllegalArgumentException);
     }
 
-    @Test
+
+    /**
+     * Tests setUp with no type
+     */
     public void testConstructorEmptyType()
     {
         Exception thrown = null;
@@ -90,7 +103,10 @@ public class ItemTest
         assertTrue(thrown instanceof IllegalArgumentException);
     }
 
-    @Test
+
+    /**
+     * Tests setUp with invalid quantity
+     */
     public void testConstructorInvalidQuantity()
     {
         Exception thrown = null;
@@ -107,7 +123,10 @@ public class ItemTest
         assertTrue(thrown instanceof IllegalArgumentException);
     }
 
-    @Test
+
+    /**
+     * Tests setQuantity
+     */
     public void testSetQuantity()
     {
         Item item = new Item("Potion", "Consumable", 5);
@@ -117,7 +136,10 @@ public class ItemTest
         assertEquals(10, item.getQuantity());
     }
 
-    @Test
+
+    /**
+     * Tests setQuantity if user attempts to set to 0
+     */
     public void testSetQuantityInvalid()
     {
         Item item = new Item("Potion", "Consumable", 5);
@@ -136,7 +158,10 @@ public class ItemTest
         assertTrue(thrown instanceof IllegalArgumentException);
     }
 
-    @Test
+
+    /**
+     * Tests addQuantity
+     */
     public void testAddQuantity()
     {
         Item item = new Item("Potion", "Consumable", 5);
@@ -146,7 +171,10 @@ public class ItemTest
         assertEquals(8, item.getQuantity());
     }
 
-    @Test
+
+    /**
+     * Tests addQuantity when user tries to add 0
+     */
     public void testAddQuantityInvalid()
     {
         Item item = new Item("Potion", "Consumable", 5);
@@ -165,11 +193,38 @@ public class ItemTest
         assertTrue(thrown instanceof IllegalArgumentException);
     }
 
-    @Test
+
+    /**
+     * Tests toString
+     */
     public void testToString()
     {
         Item item = new Item("Potion", "Consumable", 5);
 
         assertEquals("Potion (Consumable) x5", item.toString());
+    }
+
+    /**
+     * Tests getName
+     */
+    public void testGetName() {
+        Item item = new Item("Potion", "Consumable", 1);
+        assertEquals("Potion", item.getName());
+    }
+
+    /**
+     * Tests getType
+     */
+    public void testGetType() {
+        Item item = new Item("Potion", "Consumable", 1);
+        assertEquals("Consumable", item.getType());
+    }
+
+    /**
+     * Tests getQuantity
+     */
+    public void testGetQuantity() {
+        Item item = new Item("l", "la", 1);
+        assertEquals(1, item.getQuantity());
     }
 }

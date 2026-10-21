@@ -6,7 +6,7 @@ import student.TestCase;
  * Tests for QuestLog
  *
  * @author Charlotte Linney
- * @version 2026.10.13
+ * @version 2026.10.20
  */
 public class QuestLogTest extends TestCase {
 
@@ -216,5 +216,71 @@ public class QuestLogTest extends TestCase {
         log.displayQuests();
 
         assertEquals(0, log.getNumberOfQuests());
+    }
+
+     /**
+     * Test updateHistory with no completed quests
+     */
+    public void testUpdateHistoryNoCompletedQuests() {
+        QuestLog log = new QuestLog();
+
+        log.addQuest(new Quest("Dragon Hunt", "slay the dragon"));
+        log.addQuest(new Quest("Find Treasure", "look for treasure"));
+
+        log.updateHistory();
+
+        assertEquals(2, log.getNumberOfQuests());
+    }
+    
+    /**
+     * Test displayHistory runs when history is empty
+     */
+    public void testDisplayHistoryEmpty() {
+        QuestLog log = new QuestLog();
+
+        log.displayHistory();
+
+        assertEquals(0, log.getNumberOfQuests());
+    }
+    
+    /**
+     * tets removeQuest for a quest not found
+     */
+    public void testRemoveQuestNotFound() {
+    QuestLog log = new QuestLog();
+
+    assertFalse(log.removeQuest("Missing Quest"));
+}
+    
+    /**
+     * Test updateHistory adds completed quests to history
+     */
+    public void testUpdateHistory() {
+        QuestLog log = new QuestLog();
+
+        Quest quest = new Quest("Dragon Hunt");
+        log.addQuest(quest);
+
+        quest.completeQuest();
+
+        log.updateHistory();
+
+        assertEquals(1, log.getHistorySize());
+    }
+    
+    /**
+     * Test displayHistory with a completed quest
+     */
+    public void testDisplayHistory() {
+        QuestLog log = new QuestLog();
+
+        Quest quest = new Quest("Dragon Hunt");
+        log.addQuest(quest);
+
+        log.completeTheQuest("Dragon Hunt");
+
+        assertEquals(1, log.getHistorySize());
+
+        log.displayHistory();
     }
 }
