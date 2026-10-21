@@ -4,7 +4,7 @@ package questtracker;
  * Tracks and updates a player's inventory
  * 
  * @author Diya Saraf (diyas04)
- * @version 2026.10.13
+ * @version 2026.09.16
  */
 public class Inventory {
     private LinkedChain<Item> inventory;
@@ -22,7 +22,13 @@ public class Inventory {
      * Big-O: O(n) - search through inventory
      */
     public void addItem(Item item) {
-        inventory.add(item);
+        String itemName = item.getName();
+        if (findItem(itemName) != null) {
+            findItem(itemName).setQuantity(findItem(itemName).getQuantity() + item.getQuantity());
+        }else {
+            inventory.add(item);
+        }
+        
 
     }
 
@@ -38,7 +44,12 @@ public class Inventory {
         if (findItem(name) == null) {
             return false;
         }
-        inventory.remove(findItem(name));
+        Item found = findItem(name);
+        if(found.getQuantity()>1) {
+            found.setQuantity(found.getQuantity()-1);
+        }else {
+            inventory.remove(found);
+        }
         return true;
     }
 
@@ -70,7 +81,7 @@ public class Inventory {
      */
     public Item findItem(String name) {
         if(name == null || name.equals("")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Item is not in inventory");
         }
         Item[] items = inventory.toArray(new Item[inventory.size()]);
 
@@ -91,7 +102,7 @@ public class Inventory {
      * Big-O: O(n) - must display each element
      */
     public void displayInventory() {
-        inventory.toString();
+        System.out.print(inventory.toString());
     }
 
 
