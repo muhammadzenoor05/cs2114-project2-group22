@@ -117,7 +117,6 @@ public class QuestLog {
      * parameters: none
      * Big-O: O(n) - print out each quest
      */
-    // CHECK IF NEED system.out.println FOR THIS
     public void displayQuests() {
         System.out.print(questList.toString());
     }
@@ -139,7 +138,6 @@ public class QuestLog {
      * parameters: none
      */
     public void updateHistory() {
-        //history.clear();
         Quest[] quests = questList.toArray(new Quest[questList.size()]);
 
         for (Quest quest : quests) {
@@ -148,8 +146,19 @@ public class QuestLog {
             }
         }
     }
-    
+
+
+    /**
+     * displays the history linked chain as a string
+     */
     public void displayHistory() {
         System.out.print(history.toString());
+    }
+
+    /**
+     * returns an int of how long the history linkedChain is
+     */
+    public int getHistorySize() {
+        return history.size();
     }
 }
